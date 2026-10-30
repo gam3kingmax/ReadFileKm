@@ -286,7 +286,7 @@ jobs:
 
               private fun listDir(d: DocumentFile) {
                   val items = d.listFiles().sortedWith(compareBy<DocumentFile>({ !it.isDirectory }, { it.name?.lowercase() }))
-                  val labels = items.map { (if (it.isDirectory) "ð " else "ð ") + it.name }.toTypedArray()
+                  val labels = items.map { (if (it.isDirectory) "📁 " else "📄 ") + it.name }.toTypedArray()
                   AlertDialog.Builder(this).setTitle(d.name ?: "Folder")
                       .setItems(labels) { _, i -> val f = items[i]; if (f.isDirectory) listDir(f) else open(f.uri) }
                       .setNegativeButton("Close", null).show()
